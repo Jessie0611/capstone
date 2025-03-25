@@ -14,7 +14,7 @@ body{
 .content{
     width: 85%;
     height: 100%;
-    background-color: #ccc4b1;
+    background-color: #a59f93;
     padding-bottom: 100px;
 }
 .personaContainer{
@@ -56,7 +56,7 @@ a:hover{
     color:#48bccf;
 }
 a:visited{
-    color:#d0c3f1;
+    color:#c0b4dd;
 }
 hr{
     color: #372115;
