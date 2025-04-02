@@ -13,35 +13,112 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $resTime = filter_input(INPUT_POST, 'resTime', FILTER_SANITIZE_SPECIAL_CHARS);
 
     if (empty($fName) || empty($lName) || empty($eMail) || empty($phone) || empty($resDate) || empty($resTime)) {
-        die("Error: All fields are required.");
+        echo "<script type='text/javascript'>
+                alert('Error: All fields are required.');
+                window.location.href = 'reservation.php'; // Redirect back to the form
+              </script>";
+        exit;
     }
+// Function to convert 24-hour time to 12-hour format with AM/PM
+function convertTo12Hour($time) {
+    return date("g:i A", strtotime($time)); 
+}
+// Define current date and time for validation
+$currentDate = date("Y-m-d");
+$currentTime = date("H:i");
 
-    // Insert user into `users` table
-    $sql1 = "INSERT INTO users (fName, lName, eMail, phone) VALUES (?, ?, ?, ?)";
-    $stmt1 = $conn->prepare($sql1);
-    $stmt1->bind_param("ssss", $fName, $lName, $eMail, $phone);
+// Check if the selected date is in the past
+if ($resDate < $currentDate) {
+    echo "<script type='text/javascript'>
+            alert('The selected date is in the past.');
+            window.location.href = 'reservation.php';
+          </script>";
+    exit;
+} elseif ($resDate == $currentDate && $resTime < $currentTime) {
+    echo "<script type='text/javascript'>
+            alert('The selected time is in the past.');
+            window.location.href = 'reservation.php';
+          </script>";
+    exit;
+}
+// Get day of the week for the selected reservation date
+$dayOfWeek = date('w', strtotime($resDate));
+// Validate time based on business hours
+switch ($dayOfWeek) {
+    case 0: // Sunday
+        $openTime = "09:00"; 
+        $closeTime = "20:00";
+        break;
+    case 1: // Monday
+    case 2: // Tuesday
+    case 3: // Wednesday
+    case 4: // Thursday
+        $openTime = "06:00";
+        $closeTime = "21:00";
+        break;
+    case 5: // Friday
+    case 6: // Saturday
+        $openTime = "06:00";
+        $closeTime = "22:00";
+        break;
+    default:
+        echo "<script type='text/javascript'>
+                alert('Invalid day of the week.');
+                window.location.href = 'reservation.php';
+              </script>";
+        exit;
+}
+// Check if the reservation time is outside business hours
+if ($resTime < $openTime || $resTime > $closeTime) {
+    echo "<script type='text/javascript'>
+            alert('Reservations are only allowed from " . convertTo12Hour($openTime) . " to " . convertTo12Hour($closeTime) . " on this day.');
+            window.location.href = 'reservation.php';
+          </script>";
+    exit;
+}
+    // Check if user exists based on email OR phone
+    $checkUserQuery = "SELECT userID FROM users WHERE eMail = ? OR phone = ?";
+    $stmt = $conn->prepare($checkUserQuery);
+    $stmt->bind_param("ss", $eMail, $phone);
+    $stmt->execute();
+    $stmt->store_result();
 
-    if ($stmt1->execute()) {
-        $userID = $stmt1->insert_id; // Get the auto-generated userID
-
-        // Insert reservation into `reservations` table
-        $sql2 = "INSERT INTO reservations (userID, resTypeID, resDate, resTime, status) VALUES (?, ?, ?, ?, 'pending')";
-        $stmt2 = $conn->prepare($sql2);
-        $stmt2->bind_param("isss", $userID, $resTypeID, $resDate, $resTime);
-
-        if ($stmt2->execute()) {
-            // Redirect to confirmation page
-            header("Location: confirmation.php?userID=$userID");
-            exit();
-        } else {
-            die("Error: Reservation could not be saved.");
-        }
+    if ($stmt->num_rows > 0) {
+        // User exists, fetch userID
+        $stmt->bind_result($userID);
+        $stmt->fetch();
     } else {
-        die("Error: User could not be created.");
+        // User does not exist, insert new user
+        $insertUserQuery = "INSERT INTO users (fName, lName, eMail, phone) VALUES (?, ?, ?, ?)";
+        $stmt = $conn->prepare($insertUserQuery);
+        $stmt->bind_param("ssss", $fName, $lName, $eMail, $phone);
+        $stmt->execute();
+        $userID = $stmt->insert_id; // Get new userID
     }
+    
+    $stmt->close();
+    // Insert reservation into `reservations` table
+    $insertReservationQuery = "INSERT INTO reservations (userID, resTypeID, resDate, resTime, status) 
+                               VALUES (?, ?, ?, ?, 'pending')";
+    $stmt2 = $conn->prepare($insertReservationQuery);
+    $stmt2->bind_param("iiss", $userID, $resTypeID, $resDate, $resTime);
+
+    if ($stmt2->execute()) {
+        // Redirect to confirmation page
+        header("Location: confirmation.php?userID=$userID");
+        exit();
+    } else {
+        echo "<script type='text/javascript'>
+                alert('Error: Reservation could not be saved.');
+                window.location.href = 'reservation.php'; // Redirect back to the form
+              </script>";
+        exit;
+    }
+
+    $stmt2->close();
+    $conn->close();
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,51 +132,40 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="hero">
         <img src="Images/JJ-reserveHero.png" alt="Hero Image" class="hero img">
     </div>
-    <hr>
-    <nav>
-    <button class="btn"><a href="index.php">&nbsp;&nbsp;&nbsp;Home &nbsp;&nbsp;&nbsp;</a></button>
-            <button class="btn"><a href="reservation.php">Reservation</a></button>
-            <button class="btn"><a href="menu.php">&nbsp;&nbsp;&nbsp; Menu &nbsp;&nbsp;&nbsp;</a></button>
-            <button class="btn"> <a href="aboutus.php"> &nbsp;About Us&nbsp;</a></button>
+    <?php include('nav.php'); ?>
 
-    </nav>
 <p> <h3>Reserve Your Space at Jessie's Java!</h3>
 <h3>Service Options:</h3></p>
 <div class="serviceOpt">
-  <p> <b>💻BYOL (Bring Your Own Laptop) [$60.00]</b><br> A table equpied with the optional otional extra monitor, headphones, keyboard and mouse. 
+    <div class="resAlign">
+  <p> <b>💻BYOL [$60.00]</b> A bring-your-own-laptop  table equpied with the optional otional extra monitor, headphones, keyboard and mouse. 
  <br><br>
-<b>🖥️ Computer Booth [$100.00]</b><br> Booths come fully equipped with a programming computer, extra monitor, headphones, keyboard, and mouse. <br> 
+<b>🖥️ Computer Booth [$100.00]</b> Booths come fully equipped with a programming computer, extra monitor, headphones, keyboard, and mouse. <br> 
 <br><br>
-<b>👨‍👨‍👦‍👦Collaboration Room [$200.00] </b> <br>Looking for a more relaxed setting for your collaboration projects, away from the office grind? <br>
+<b>👨‍👨‍👦‍👦Collaboration Room [$200.00] </b> Looking for a more relaxed setting for your collaboration projects, away from the office grind? 
 Our collaboration rooms are designed to provide just that, with two computer booths and space for up to eight BYOL areas,
  it's the perfect space for creative work. <br><br>
-</p> 
-    </div>
+ <br>
+ <small>Reservations must be made at least one hour before closing.</small>
     <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
     <label for="resTypeID">Select Your Space</label>
     <select id="resTypeID" name="resTypeID" required>
-        <option value="">--- Select Your Space ---</option>
+        <option value="">- - - Select Your Space - --</option>
         <option value="1">($60.00) BYOL Table</option>
         <option value="2">($100.00) Computer Booth</option>
         <option value="3">($200.00) Collaboration Room</option>
     </select> 
 
-    <label for="resDate">Reservation Date</label>
     <input type="date" id="resDate" name="resDate" required>
 
-    <label for="resTime">Reservation Time</label>
     <input type="time" id="resTime" name="resTime" required>
 
-    <label for="fName">First Name</label>
     <input type="text" id="fName" name="fName" placeholder="First Name" required>
 
-    <label for="lName">Last Name</label>
     <input type="text" id="lName" name="lName" placeholder="Last Name" required>
 
-    <label for="eMail">Email Address</label>
     <input type="email" class="form-control is-invalid" id="eMail" name="eMail" placeholder="E-mail Address" required>
 
-    <label for="phone">Phone Number</label>
     <input type="tel" id="phone" name="phone" placeholder="Phone Number">
 <div class="container">
     <p>Please read the disclosure agreement and check the box to continue. <br> 
@@ -158,6 +224,7 @@ Amendments & Updates: We reserve the right to modify this Agreement at any time.
 <br><br> <br> <br>
         <button type="submit" class="submit">Reserve</button>
 </div>
+</div></div>
        </form>
    <button id="chatbotButton" onclick="toggleChatbot()">💬 Brewgle</button>
           <div id="chatbotContainer">
@@ -175,18 +242,7 @@ Amendments & Updates: We reserve the right to modify this Agreement at any time.
               ></iframe>
           </div>
      <br>
-               <footer class="footer">
-                   <div class="socialLinks">
-                     <a href="https://www.facebook.com" target="_blank" class="socialLink">
-                       <img src="Images/facebook.jpg" class="socialIcon"></a>
-                   <a href="https://www.instagram.com" target="_blank" class="socialLink">
-                     <img src="Images/insta.jpg" class="socialIcon">
-                 </div>
-               </footer>
-            
-                
-</div>   
-               <hr>
+     <?php include('footer.php'); ?>
     <script src="script.js"></script>
 </body>
 </html>

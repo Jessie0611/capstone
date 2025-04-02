@@ -11,16 +11,10 @@
 <div class="content">
     <div class="hero">
         <img src="Images/jj-hero.png" alt="Hero Image" class="hero img"></div>
-        <hr>
-        <nav>
-        <button class="btn"><a href="index.php">&nbsp;&nbsp;&nbsp;Home &nbsp;&nbsp;&nbsp;</a></button>
-            <button class="btn"><a href="reservation.php">Reservation</a></button>
-            <button class="btn"><a href="menu.php">&nbsp;&nbsp;&nbsp; Menu &nbsp;&nbsp;&nbsp;</a></button>
-            <button class="btn"> <a href="aboutus.php"> &nbsp;About Us&nbsp;</a></button>
-        </nav>
-
+        <?php include('nav.php'); ?>
 
     <div class="aboutUs">
+      <div class="aboutAlign">
         <p>
 At Jessie's Java, we've brewed up the perfect blend of productivity and comfort for the coding community!
 <br> Step into a space meticulously designed with programmers in mind, where the aroma of freshly ground coffee fuels your coding creativity. <br>
@@ -33,28 +27,37 @@ At Jessie's Java, we've brewed up the perfect blend of productivity and comfort 
 <br><br>Join us at Jessie's Java, where every line of code is written with a side of exceptional coffee. Elevate your programming experience in an environment that's as dynamic as your code.
 <br> Your next breakthrough awaits—sip, code, repeat! 💻☕
 </p>
-    </div>
-        <h2>Business Hours:</h2>
-    Monday   6:00 a.m.-9:00 p.m. <br>
-    Tuesday 6:00 a.m. - 9:00 p.m.<br>
-    Wednesday 6:00 a.m. - 9:00 p.m. <br>
-    Thursday 6:00 a.m. - 9:00 p.m. <br>
-    Friday 6:00 a.m. - 10:00 p.m. <br>
-    Saturday 6:00 a.m. - 10:00 p.m. <br>
-    Sunday 8:00 a.m. - 8:00 p.m <br>
-<br>
+   
+    <section class="business-hours">
+    <h2>Business Hours</h2>
+    <ul>
+      <li><span class="day">Monday</span><span class="hours">6:00 a.m. - 10:00 p.m.</span></li>
+      <li><span class="day">Tuesday</span><span class="hours">6:00 a.m. - 10:00 p.m.</span></li>
+      <li><span class="day">Wednesday</span><span class="hours">6:00 a.m. - 10:00 p.m.</span></li>
+      <li><span class="day">Thursday</span><span class="hours">6:00 a.m. - 10:00 p.m.</span></li>
+      <li><span class="day">Friday</span><span class="hours">6:00 a.m. - 11:00 p.m.</span></li>
+      <li><span class="day">Saturday</span><span class="hours">6:00 a.m. - 11:00 p.m.</span></li>
+      <li><span class="day">Sunday</span><span class="hours">9:00 a.m. - 9:00 p.m.</span></li>
+    </ul>
+            <address class="address-container">
+    <strong>Jessie's Java Address:</strong>
+    123 Java Avenue, Suite 200<br>
+    Atlanta, GA 30303<br><br>
+    <strong>Jessie's Java Phone:</strong>
+    (404) 555-0198
+  </address>
+  </section>
         <h2>Contact Us</h2>
-        <form action="#" method="POST">
-          <label for="name">Name:</label>
+        <form action="contact.php" method="POST">
+        <label for="name">Name:</label>
           <input type="name" id="name" name="name" required placeholder="Your Name">
           <label for="email">Email:</label>
           <input type="email" id="email" name="email" required placeholder="Your Email">
           <label for="message">Message:</label>
           <textarea id="message" name="message" required placeholder="Your Message"></textarea>
-          
-          <button type="submit">Send Message</button>
+          <button type="submit" class="submit">Send Message</button>
         </form>
-      
+      </div> </div>
       <button id="chatbotButton" onclick="toggleChatbot()">💬 Brewgle</button>
       <div id="chatbotContainer">
           <div id="chatbotHeader" onclick="toggleChatbot()">💬 Close Brewgle  &nbsp;&nbsp;&nbsp;&nbsp; ✖<span id="close-chatbot" onclick="toggleChatbot()">
@@ -71,16 +74,7 @@ At Jessie's Java, we've brewed up the perfect blend of productivity and comfort 
           ></iframe>
       </div>
  <br>
-           <footer class="footer">
-               <div class="socialLinks">
-                 <a href="https://www.facebook.com" target="_blank" class="socialLink">
-                   <img src="Images/facebook.jpg" class="socialIcon"></a>
-               <a href="https://www.instagram.com" target="_blank" class="socialLink">
-                 <img src="Images/insta.jpg" class="socialIcon">
-             </div>
-           </footer>
-           <hr> 
-</div>
+ <?php include('footer.php'); ?>
     <script src="script.js"></script>
 </body>
 </html>
