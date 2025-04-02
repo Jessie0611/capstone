@@ -13,7 +13,7 @@ body {
 }
 
 .content {
-    width: 85%;
+    width: 80%;
     height: 100%;
     background-color: #bfaf9b;
     padding-bottom: 100px;
@@ -72,4 +72,8 @@ a:visited {
 
 hr {
     color: #4a2c1f;
+}
+img{
+    padding-top: 30px;
+    padding-inline: 30px;
 }
