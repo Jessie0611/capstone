@@ -8,32 +8,32 @@
 </head>
 <body>
     <div class="content">
-        <br>
-        <hr>
-        <nav>
-            <button><a href="persona.html">Persona</a></button>
-            <button><a href="storyboard.html">Storyboard</a></button>
-            <button><a href="stakeholderMap.html">Stakeholder Map</a></button>
-            <button><a href="sitemap.html">Site Structure</a></button>
-            <button><a href="tasklist.html">Task List</a></button>
-            <button><a href="index.html"> Jessie's Java </a> </button>
-        </nav>
-<hr>
-<br>
-<br>
-<div class="taskContainer"><h1>User Task List</h1>
+        <div id="nav"></div>
+
+        <script>
+          fetch("nav.html")
+            .then(response => response.text())
+            .then(data => {
+              document.getElementById("nav").innerHTML = data;
+            });
+        </script>
+        
+<br> <img src="JJ_Files in PHP/Images/jj-hero.png" width="550px">
+
+<div class="taskContainer"><h1><u>User Task List for Jessie's Java</u></h1>
 
     <div class="userTask">
 <br>
-<h3>Browse Information:</h3><br>
+<h3>User is able to Browse Information:</h3>
 <ul>
     <li>View Event Calander</li>
     <li>Explore the coffee menu options</li>
     <li>Read about the cafe on the About Us page</li>
+    <li>Visit social media links for Jessie's Java</li>
 </ul>
-</div> <br>
+</div>
 <div class="userTask">
-<h3>Make A Reservation</h3> <br>
+<h3>User is able to Make A Reservation</h3>
 <ul>
     <li>Access the reservation form</li>
     <li>Fill in required information with alerts for out of bounds time</li>
@@ -41,12 +41,16 @@
     <li>Submit form</li>
     <li>View succsessful reservation information</li>
     <li>Receive confirmation via email</li>
-</ul><br>
+</ul>
 </div>
 <div class="userTask">
-    <h3>Get Help</h3> <br>
+    <h3>User is able to Get Help</h3>
 <ul>
     <li>Interact with the chatbot in the corner of all pages</li>
     <li>Access contact form to e-mail the company</li>
 </ul>
-</div></div>
+</div>
+</div>
+</div>
+</body>
+</html>

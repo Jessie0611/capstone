@@ -9,18 +9,19 @@
 </head>
 <body>
     <div class="content">
+        <div id="nav"></div>
+
+        <script>
+          fetch("nav.html")
+            .then(response => response.text())
+            .then(data => {
+              document.getElementById("nav").innerHTML = data;
+            });
+        </script>
         <br>
-        <hr>
-        <nav>
-            <button><a href="persona.html">Persona</a></button>
-            <button><a href="storyboard.html">Storyboard</a></button>
-            <button><a href="stakeholderMap.html">Stakeholder Map</a></button>
-            <button><a href="sitemap.html">Site Structure</a></button>
-            <button><a href="tasklist.html">Task List</a></button>
-            <button><a href="index.html"> Jessie's Java </a> </button>
-        </nav>
-        <hr>
-        <br> <br><br>
+        <h1>Site Structure for Jessie's Java
+
+        </h1><br><br>
         <img src="img/siteMap.jpg" width="900px">
         <br><br><br><br>
         </div>

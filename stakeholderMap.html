@@ -8,18 +8,18 @@
 </head>
 <body>
     <div class="content">
-        <br>
-        <hr>
-        <nav>
-            <button><a href="persona.html">Persona</a></button>
-            <button><a href="storyboard.html">Storyboard</a></button>
-            <button><a href="stakeholderMap.html">Stakeholder Map</a></button>
-            <button><a href="sitemap.html">Site Structure</a></button>
-            <button><a href="index.html"> Jessie's Java </a> </button>
-        </nav>
-<hr>
-<br> <br>
+        <div id="nav"></div>
 
+        <script>
+          fetch("nav.html")
+            .then(response => response.text())
+            .then(data => {
+              document.getElementById("nav").innerHTML = data;
+            });
+        </script>
+<br> <br>
+<h1>Stakeholder Map for Jessie's Java</h1>
+<br>
 <img src="img/MAP.png" width="900px">
 <br><br>
 <br>

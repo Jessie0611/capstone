@@ -39,27 +39,38 @@ body {
     padding: 30px;
 }
 .taskContainer {
-    width: 90%;
+    width: 40%;
     display: flex;
+    flex-direction: column; /* Stack  vertically */
     justify-content: center;
     padding: 10px;
     margin: auto;
 }
-.userTask{
-    text-align: left;
+li{
+    text-decoration: dashed;
 }
+.userTask {
+    text-align: left;
+    padding: 10px;
+    font-size: medium;
+}
+
 small {
     font-style: italic;
 }
 
 button {
     background-color: #ae9c85;
-    font-size: larger;
-    padding: 8px;
+    font-size: medium;
+    padding: 5px;
     box-shadow: 3px 3px 8px #3d2b1f;
     border: 1px solid #4a2c1f;
     color: #f5f5dc;
-    border-radius: 12px;
+    border-radius: 4px;
+}
+button:hover{
+    background-color: #ccbda9;
+
 }
 
 a {
