@@ -26,14 +26,14 @@ nav{
     justify-content: center;
 }
 .btn{
-    margin-top: 10px;
-    margin-left: 20px;
+    margin-top: 20px;
+    margin-left: 30px;
     border: none;
     background-color: #b0907b;
     border: 3px solid #625750;
-    border-radius: 30px;
+    border-radius: 13px;
     color: #fff2df;
-    width: 145px;
+    width: 135px;
     font-size: large;
 }
 .btn:hover {
@@ -74,25 +74,6 @@ button:hover {
     background-color: #625750;
     border: 2px solid #78ada5;
 }
-#spaceType, #resDate,#resTime, #fullName, #email, #phone, #drinkType{
-    font-size: 14px;
-    background-color:#d9d3cb;
-}
-.menu-section {
-    margin: 20px;
-    padding: 10px;
-    border: 3px solid #78ada5;
-    border-radius: 8px;
-    background-color: #fff;
-}
-.menu-item {
-    margin: 5px 0;
-    font-size: 18px;
-}
-.menu-item span {
-    font-weight: bold;
-}
-
 .btn:hover {
     background-color: hsl(23, 7%, 23%);
     border: 3px solid #78ada5;
@@ -100,11 +81,11 @@ button:hover {
 a {
     color: white;
     text-decoration: dotted;
-    font-size: 18px;
+    font-size: medium;
     pointer-events: visible;
 }
 a:hover {
-    color: #78ada5;
+    color: #81e9da;
     text-decoration: dotted;
     pointer-events: visible;
 }
@@ -114,93 +95,8 @@ h2, h3 {
     align-items: center;
     color: hsl(23, 7%, 23%);
 }
-/*ABOUT US*/
-.aboutUs {
-    width: 70%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    margin: 0 auto; /* Center horizontally */
-}
-/* Contact Section */
-.contact {
-    text-align: center;
-    margin: 50px auto;
-    width: 80%;
-    max-width: 600px;
-}
-.contact h2 {
-    margin-bottom: 20px;
-}
-.contact form {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-.contact label {
-    font-size: 16px;
-    margin-bottom: 10px;
-    font-weight: bold;
-}
-.contact input, .contact textarea {
-    padding: 5px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 14px;
-    background-color: #d9d3cb;
-}
-.contact button {
-    font-size: 14px;
-    padding: 10px;
-    background-color: #b0907b;
-    color: white;
-    border: none;
-    border: 1px solid #625750;
-    cursor: pointer;
-}
-.contact button:hover {
-        background-color: #625750;
-        border: 2px solid #78ada5;
-}
-.business-hours {
-   max-width: 300px;
-   margin: 10px auto;
-   background-color: #f8f8f8;
-   border: 1px solid #ddd;
-   border-radius: 8px;
-   padding: 10px;
-   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
-.business-hours h2 {
-   text-align: center;
-   color: #333;
-   margin-bottom: 10px;
-   border-bottom: 2px solid #333;
-   padding-bottom: 10px;
-}
-.business-hours ul {
-   list-style: none;
-   padding: 0;
-   margin: 0;
-}
-.business-hours li {
-   display: flex;
-   justify-content: space-between;
-   padding: 4px 0;
-   border-bottom: 1px solid #eee;
-}
-.business-hours li:last-child {
-  border-bottom: none;
-}
-.business-hours .day {
-   font-weight: bold;
-   color: #555;
-}
-.business-hours .hours {
-   color: #777;
-}
+
+
 /*RES FORM*/
 form {
     align-items: center;
@@ -253,6 +149,11 @@ input, select, textarea {
     border-radius: 8px;
     box-shadow: 1px 1px 6px 1px  hsl(23, 7%, 23%);
 }
+
+/*MENU*/
+.menu-item span {
+    font-weight: bold;
+}
 .menu-section {
     margin: 20px;
     padding: 10px;
@@ -262,16 +163,109 @@ input, select, textarea {
 }
 .menu-item {
     margin: 5px 0;
-    font-size: 18px;
+    font-size: 16px;
+    padding: 5px;
 }
 .menu-item span {
     font-weight: bold;
 }
+/*ABOUT US*/
+.aboutUs {
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 0 auto; /* Center horizontally */
+}
+
+/* Contact Section */
+.contact {
+    text-align: center;
+    margin: 50px auto;
+    width: 80%;
+    max-width: 600px;
+}
+.contact h2 {
+    margin-bottom: 20px;
+}
+.contact form {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.contact label {
+    font-size: 16px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+.contact input, .contact textarea {
+    padding: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: #d9d3cb;
+}
+.contact button {
+    font-size: 14px;
+    padding: 10px;
+    background-color: #b0907b;
+    color: white;
+    border: none;
+    border: 1px solid #625750;
+    cursor: pointer;
+}
+.contact button:hover {
+        background-color: #625750;
+        border: 2px solid #78ada5;
+}
+.businessHours {
+   max-width: 300px;
+   margin: 10px auto;
+   background-color: #f8f8f8;
+   border: 1px solid #ddd;
+   border-radius: 8px;
+   padding: 10px;
+   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+.businessHours h2 {
+   text-align: center;
+   color: #333;
+   margin-bottom: 10px;
+   border-bottom: 2px solid #333;
+   padding-bottom: 10px;
+}
+.businessHours ul {
+   list-style: none;
+   padding: 0;
+   margin: 0;
+}
+.businessHours li {
+   display: flex;
+   justify-content: space-between;
+   padding: 4px 0;
+   border-bottom: 1px solid #eee;
+}
+.businessHours li:last-child {
+  border-bottom: none;
+}
+.businessHours .day {
+   font-weight: bold;
+   color: #555;
+}
+.businessHours .hours {
+   color: #777;
+}
+
+.printBtn{
+    font-size: medium;
+}
 /* CALANDER */
 .calendar-container {
     width: 400px;
-    height: 520px;
-    padding: 20px;
+    height: 530px;
+    padding: 0px;
     background-color: #b7b19e;
     display: flex;
     flex-direction: column;
@@ -305,8 +299,8 @@ button:hover {
 }
 #calendar th,
 #calendar td {
-    padding: 4px;
-    border: 2px solid white;
+    padding: 6px;
+    border: 1px solid white;
     text-align: center;
 }
 #calendar td {
@@ -317,17 +311,27 @@ button:hover {
 }
 /* Upcoming Events Section */
 .upcoming-events {
-    margin-top: 30px;
-    max-width: 600px;
+    margin-top: 5px;
+    width: 100%;
+    min-height: 400px;
 }
 #events-list {
     list-style: none;
-    padding: 2px;
+    padding: 5px;
     max-width: 600px;
 }
+li {
+    display: flex;
+    justify-content: left;
+    max-width: 660px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    white-space: nowrap; 
+}
+
 /*FOOTER Social media links */
 .footer .socialLinks {
-    margin-top: 80px;
+    margin-top: 90px;
     display: flex;
     justify-content: center;
     gap: 20px;
@@ -396,15 +400,16 @@ button:hover {
     background-color: #b0907b;
     box-shadow: 0px 2px 5px #625750;
 }
+
 .accordion {
     width: 100%;
-    max-width: 700px;
     margin: 20px auto;
 }
-.accordion-item {
+.accordionItem {
     border-bottom: 1px solid #78ada5;
+
 }
-.accordion-header {
+.accordionHeader {
     background: hsl(23, 7%, 23%);
     color: white;
     border-radius: 8px;
@@ -416,18 +421,59 @@ button:hover {
     width: 98%;
     outline: none;
     transition: 0.3s;
+    border: 2px solid #78ada5;
+
 }
-.accordion-header:hover {
-    background: hsl(23, 7%, 23%);
+.accordionHeader:hover {
+    background: #b0907b;
 }
-.accordion-content {
+.accordionContent {
     display: none;
     padding: 15px;
     background: #fff;
     overflow: hidden;
     box-shadow: 1px 1px 8px 1px  hsl(23, 7%, 23%);
-
 }
+
+/*SEARCH*/
+.searchRes{
+    display: grid;
+    justify-content: center;
+}
+.search {
+    width: 80px;
+    background: hsl(23, 7%, 23%);
+    color: white;
+    border-radius: 12px;
+    padding: 12px;
+}
+.search:hover {
+    width: 80px;
+    background-color: #b0907b;
+}
+.edit {
+    border-radius: 30px;
+    padding: 4px;
+    width: 70px;
+    background-color: hsl(23, 7%, 23%);
+    color: white;
+    border: 1px solid white;
+}
+.edit:hover {
+    background-color: #be641a;
+}
+.cancel {
+    border-radius: 30px;
+    padding: 4px;
+    width: 70px;
+    background-color: hsl(23, 7%, 23%);
+    color: white;
+    border: 1px solid white;
+}
+.cancel:hover {
+    background-color: #921c27;
+}
+
 .confirm-align{
     width: 100%;
     display: flex;
@@ -465,6 +511,8 @@ button:hover {
     text-align: left;
     padding: 20px;
 }
+
+
 @media print {
     /* Hide elements on the page */
     body * {
@@ -483,13 +531,14 @@ button:hover {
         left: 0;
     }
 }
-.address-container {
+.addressContainer {
     line-height: 1.5;
 }
-.address-container strong {
+.addressContainer strong {
     display: block;
     margin-bottom: 0.5em;
 }
+
 /* Responsive Design */
 @media (max-width: 768px) {
     /* Adjust content width */
@@ -543,51 +592,107 @@ button:hover {
     }
 
     /* Adjust accordion items for mobile */
-    .accordion-item {
+    .accordionItem {
         padding: 5px;
     }
 
-    .accordion-header {
+    .accordionHeader {
         font-size: 14px;
     }
 }
 
-/* Responsive for smaller screens (max-width: 480px) */
-@media (max-width: 480px) {
-    /* Adjust content width even more for smaller screens */
+
+/* Responsive Design */
+@media (max-width: 1024px) {
     .content {
-        width: 100%;
+        width: 95%;
     }
 
-    /* Adjust text sizes further for smaller screens */
+    .calendar-container {
+        width: 90%;
+        height: auto;
+    }
+
+    #chatbotContainer {
+        width: 90%;
+        height: 500px;
+    }
+}
+
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn {
+        width: 80%;
+        margin: 10px auto;
+        font-size: medium;
+    }
+
     h2, h3 {
+        font-size: 1.5rem;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .contact,
+    .businessHours,
+    .calendar-container,
+    .accordion,
+    .confirmation-container,
+    .resAlign,
+    .aboutAlign {
+        width: 90%;
+        padding: 10px;
+    }
+
+    form input,
+    form select,
+    form textarea,
+    #resDate, #resTime, #fName, #lName, #email, #eMail, #phone, #drinkType, #message, #name {
+        width: 100%;
         font-size: 16px;
+    }
+
+    .submit, .printBtn, button {
+        width: 100%;
+        font-size: 16px;
+    }
+
+    .footer .socialLinks {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 14px;
+    }
+
+    .btn {
+        font-size: small;
+    }
+
+    .accordionHeader {
+        font-size: 14px;
     }
 
     .menu-item {
         font-size: 16px;
     }
 
-    /* Adjust button size */
-    .btn {
-        width: 90%; /* Make buttons almost full width */
-        margin-left: 0;
+    .contact button,
+    .submit,
+    button {
+        padding: 8px;
+        font-size: 14px;
     }
 
-    /* Adjust footer for smaller screens */
-    .footer .socialLinks {
-        flex-direction: row;
-        gap: 10px;
-    }
-
-    /* Adjust chatbot button size */
     #chatbotButton {
         padding: 8px 10px;
         font-size: 12px;
-    }
-
-    /* Adjust form input width */
-    input, select, textarea, .submit {
-        width: 100%;
     }
 }
