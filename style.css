@@ -70,6 +70,21 @@ li{
 small {
     font-style: italic;
 }
+.dbContainer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    margin: auto;
+}
+.dbContent{
+    display: grid;
+    display: inline-grid;
+    float: right;
+    width: 530px;
+    text-align: left;
+    padding: 5px;
+}
 
 button {
     background-color: #ae9c85;

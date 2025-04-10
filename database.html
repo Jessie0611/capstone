@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capstone: Jessica Battles </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="content">
+        <div id="nav"></div>
+        <script>
+            fetch("nav.html")
+              .then(response => response.text())
+              .then(data => {
+                document.getElementById("nav").innerHTML = data;
+              });
+          </script>
+       <h1>Jessie's Java: Database Design</h1>
+       <img src="img/JJ_DB_Design.jpg" alt="Database Design" width="800px">
+       <div class="dbContainer">
+        <div class="dbContent">
+        <table border="2" cellpadding="6" cellspacing="3" width="460px">
+            <thead>
+              <tr>
+                <th>Table</th>
+                <th>Role</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>users</b></td>
+                <td>&nbsp;&nbsp;Stores customer/user information.</td>
+              </tr>
+              <tr>
+                <td><b>reservations</b></td>
+                <td>&nbsp;&nbsp;Manages individual reservations.</td>
+              </tr>
+              <tr>
+                <td><b>restype</b></td>
+                <td>&nbsp;&nbsp;Defines reservation types &amp; pricing.</td>
+              </tr>
+              <tr>
+                <td><b>payments</b></td>
+                <td>&nbsp;&nbsp;Tracks payments made for reservations.</td>
+              </tr>
+            </tbody>
+          </table>
+     
+    <p> <h3>🧑‍🤝‍🧑 users ↔ reservations</h3>
+      <ul>
+       <li>Relationship: One-to-Many</li>
+       <li>Details: A single user can make multiple reservations, but each reservation is linked to one user.</li>
+       <li>Foreign Key in <b>reservations: userID </b>references <b>users.userID</b>.</li>
+       </ul>
+
+       <h3>🗂️ restype ↔ reservations</h3>
+       <ul>
+        <li>Relationship: One-to-Many</li>
+        <li>Details: Each reservation is for one reservation type (table,booth,room), but each reservation type can apply to many reservations.</li>
+        <small>resTypeID[1,2,3];
+        typeName[Table, Booth, Room];
+        resPrice[60, 100, 200]</small>
+        <li>Foreign Key in <b>reservations: resTypeID</b> references <b>restype.resTypeID</b>.</li>
+       </ul>
+     
+       <h3>🧾 reservations ↔ payments</h3>
+       <ul>
+        <li>Relationship: One-to-Many</li>
+        <li>Details: A reservation can have multiple payments (e.g., deposit + remaining balance, failed payments), but each payment belongs to only one reservation.</li>
+        <li>Foreign Key in <b>payments: resID</b> references <b>reservations.resID</b>.</li>
+       </ul>
+
+
+        </p>
+</div>
+</div>
+    </div>
+</body>
+</html>
