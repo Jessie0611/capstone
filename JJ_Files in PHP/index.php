@@ -19,9 +19,9 @@ include("database.php");
             <br>
             <br>
             <div class="calendar-header">
-              <button id="prev-month">&lt;</button>
+              <button id="prev-month"> &lt; </button>
               <h2 id="month-year"></h2>
-              <button id="next-month">&gt;</button>
+              <button id="next-month"> &gt; </button>
               <br>
             </div>
         
@@ -45,21 +45,6 @@ include("database.php");
               <ul id="events-list"></ul>
             </div>
           </div>
-     <button id="chatbotButton" onclick="toggleChatbot()">💬 Brewgle</button>
-     <div id="chatbotContainer">
-         <div id="chatbotHeader" onclick="toggleChatbot()">💬 Close Brewgle  &nbsp;&nbsp;&nbsp;&nbsp; ✖<span id="close-chatbot" onclick="toggleChatbot()">
-         </span></div>
-          <iframe
-            id="chatbotiFrame"
-            title="Brewgle"
-            src="https://jessiesjava.ai.copilot.live"
-            style="border:none;"
-            loading="lazy"
-            allow="microphone;camera;speaker;clipboard-read;clipboard-write;geolocation;"
-            width="400px"
-            height="540px"
-         ></iframe>
-     </div>
 <br>
 <?php include('footer.php'); ?>
     <script src="script.js"></script>

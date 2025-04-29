@@ -22,31 +22,15 @@
                    <option value="icedLattes">Iced Lattes</option>
                    <option value="hotEspresso">Hot Espresso Drinks</option>
                    <option value="icedEspresso">Iced Espresso Drinks</option>
+                   <option value="teaOptions">Tea Options</option>
                </select>
-           <br>
-           <br>
                <div id="menu" class="menu-section"></div>
-           <br>
            </body>
            </html>
-           
-           <button id="chatbotButton" onclick="toggleChatbot()">💬 Brewgle</button>
-           <div id="chatbotContainer">
-               <div id="chatbotHeader" onclick="toggleChatbot()">💬 Close Brewgle  &nbsp;&nbsp;&nbsp;&nbsp; ✖<span id="close-chatbot" onclick="toggleChatbot()">
-               </span></div>
-                <iframe
-                  id="chatbotiFrame"
-                  title="Brewgle"
-                  src="https://jessiesjava.ai.copilot.live"
-                  style="border:none;"
-                  loading="lazy"
-                  allow="microphone;camera;speaker;clipboard-read;clipboard-write;geolocation;"
-                  width="400px"
-                  height="540px"
-               ></iframe>
-           </div>
+
       <br>
       <?php include('footer.php'); ?>
     <script src="script.js"></script>
+</div>
 </body>
 </html>

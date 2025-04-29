@@ -46,8 +46,17 @@ body {
     padding: 10px;
     margin: auto;
 }
-li{
+.reportContainer{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+    margin: auto;
+}
+li,ul{
     text-decoration: dashed;
+    padding-bottom: 8px;
 }
 .userTask {
     text-align: left;
@@ -55,7 +64,7 @@ li{
     font-size: medium;
 }
 .successContainer{
-    width: 60%;
+    width: 55%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -85,7 +94,6 @@ small {
     text-align: left;
     padding: 5px;
 }
-
 button {
     background-color: #ae9c85;
     font-size: medium;
@@ -97,24 +105,14 @@ button {
 }
 button:hover{
     background-color: #ccbda9;
-
 }
-
 a {
     text-decoration: none;
-    color: #5a3e2b;
+    color: #97460f;
 }
 
 a:hover {
     color: #ffdab9;
-}
-
-a:visited {
-    color: #4a2c1f;
-}
-
-hr {
-    color: #4a2c1f;
 }
 img{
     padding-top: 30px;

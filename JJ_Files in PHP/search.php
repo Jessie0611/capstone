@@ -1,11 +1,11 @@
 <?php
 include("database.php");
-
+//initialize var and array
 $searchTerm = "";
 $reservations = [];
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $searchTerm = trim($_POST["search"]);
+if ($_SERVER["REQUEST_METHOD"] == "POST") { //handle form submittion POST
+    $searchTerm = trim($_POST["search"]); //Trims whitespace from user input.
 
     // Query user based on reservation ID (resID)
     $stmt = $conn->prepare("
@@ -15,16 +15,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     JOIN restype rt ON r.resTypeID = rt.resTypeID
     WHERE r.resID = ?
     ");
-
+//This query joins three tables: reservations (r) users (u) → to get user info restype (rt) → to get the type of reservation
     // Bind the search term (resID)
     $stmt->bind_param("i", $searchTerm);
     $stmt->execute();
-    $result = $stmt->get_result();
+    $result = $stmt->get_result(); //runs query, gets results
 
     while ($row = $result->fetch_assoc()) {
-        $reservations[] = $row;
+        $reservations[] = $row; //Adds each result to the $reservations array.
     }
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -50,11 +51,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </form>
 <style>
     th, td{
-        padding-left: 14px;
+        padding-left: 18px;
     }
     input{
         width: 200px;
-        padding: 10px;
+        padding: 17px;
         border: 1px solid #ddd;
         border-radius: 4px;
         box-shadow: 1px 1px 6px 1px  hsl(23, 7%, 23%);
@@ -69,27 +70,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                <th>Name</th>
                <th>Type</th>
                <th>Date</th>
-               <th>Time</th>
+               <th>Start Time</th>
+               <th>End Time</th>
                <th>Status</th>
                <th>Actions</th>
             </tr>
 <?php foreach ($reservations as $res): ?>
-            <tr>
-                <td><?= $res['resID'] ?></td>
-                <td><?= $res['fName'] . ' ' . $res['lName'] ?></td>
-                <td><?= $res['typeName'] ?></td>
-                <td><?= $res['resDate'] ?></td>
-                <td><?= $res['resTime'] ?></td>
-                <td><?= $res['status'] ?></td>
-                <td>
-                            <form class="inline" action="edit.php" method="get">
-                                <input type="hidden" name="resID" value="<?= $res['resID'] ?>">
-                                <button type="submit" class="edit">Edit</button>
-                            </form>
-                            <form class="inline" action="cancel.php" method="post" onsubmit="return confirm('Are you sure you want to cancel this reservation?');">
-                                <input type="hidden" name="resID" value="<?= $res['resID'] ?>">
-                                <button type="submit" class="cancel">Cancel</button>
-                            </form>
+        <tr>
+            <td><?= $res['resID'] ?></td>
+            <td><?= $res['fName'] . ' ' . $res['lName'] ?></td>
+            <td><?= $res['typeName'] ?></td>
+            <td><?= $res['resDate'] ?></td>
+            <td><?= $res['resStartTime'] ?></td>
+            <td><?= $res['resEndTime'] ?></td>
+
+            <td><?= $res['status'] ?></td>
+            <td>
+        <form class="inline" action="edit.php" method="get">
+        <input type="hidden" name="resID" value="<?= $res['resID'] ?>">
+        <button type="submit" class="edit">Edit</button>
+        </form>
+<?php if ($res['status'] === 'Canceled'): ?>
+        <em style="color: gray;">Already Canceled</em>
+        <?php else: ?>
+    <form class="inline" action="cancel.php" method="post" onsubmit="return confirm('Are you sure you want to cancel this reservation?');">
+       <input type="hidden" name="resID" value="<?= $res['resID'] ?>">
+       <button type="submit" class="cancel">Cancel</button>
+    </form>
+    <?php endif; ?>
+
                         </td>
                     </tr>
                 <?php endforeach; ?>
@@ -100,22 +109,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <script src="script.js"></script>
         <br>
         </div>
-<button id="chatbotButton" onclick="toggleChatbot()">💬 Brewgle</button>
-       <div id="chatbotContainer">
-           <div id="chatbotHeader" onclick="toggleChatbot()">💬 Close Brewgle  &nbsp;&nbsp;&nbsp;&nbsp; ✖<span id="close-chatbot" onclick="toggleChatbot()">
-           </span></div>
-            <iframe
-              id="chatbotiFrame"
-              title="Brewgle"
-              src="https://jessiesjava.ai.copilot.live"
-              style="border:none;"
-              loading="lazy"
-              allow="microphone;camera;speaker;clipboard-read;clipboard-write;geolocation;"
-              width="400px"
-              height="540px"
-           ></iframe>
-       </div>
-  <br>
+        
+  <br> <br> <br>
   <?php include('footer.php'); ?>
     </div>
     

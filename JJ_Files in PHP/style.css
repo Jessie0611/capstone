@@ -12,7 +12,7 @@ body{
     text-align: center;
 }
 .content{
-    width: 85%;
+    width: 80%;
     height: 100%;
     background-color: #b7b19e;
     padding-bottom: 100px;
@@ -27,7 +27,7 @@ nav{
 }
 .btn{
     margin-top: 20px;
-    margin-left: 30px;
+    margin-left: 40px;
     border: none;
     background-color: #b0907b;
     border: 3px solid #625750;
@@ -38,7 +38,7 @@ nav{
 }
 .btn:hover {
     background-color: hsl(23, 7%, 23%);
-    border: 5px solid #78ada5;
+    border: 4px solid #78ada5;
     color: #78ada5;
 }
 a{
@@ -61,7 +61,7 @@ h2, h3{
     color: hsl(23, 7%, 23%);
 }
 button {
-    font-size: 12px;
+    font-size:medium;
     width: 15%;
     padding: 10px;
     background-color: #b0907b;
@@ -73,10 +73,6 @@ button {
 button:hover {
     background-color: #625750;
     border: 2px solid #78ada5;
-}
-.btn:hover {
-    background-color: hsl(23, 7%, 23%);
-    border: 3px solid #78ada5;
 }
 a {
     color: white;
@@ -97,19 +93,36 @@ h2, h3 {
 }
 
 
-/*RES FORM*/
-form {
+/*RESERVATION PAGE*/
+.serviceOpt{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.resAlign{
+    align-self: center;
+    max-width: 620px;
+    text-align: left;
+    padding: 10px;
+}
+.checkoutAlign{
+    align-self: center;
+    max-width: 700px;
+    text-align: left;
+    padding: 5px;
+}
+form{
     align-items: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
-label {
+label{
     font-size: 16px;
     margin-bottom: 10px;
     font-weight: bold;
 }
-input, select, textarea {
+input, select, textarea{
     padding: 5px;
     margin-bottom: 15px;
     border: 1px solid #ddd;
@@ -141,7 +154,7 @@ input, select, textarea {
     border-radius: 8px;
     box-shadow: 1px 1px 6px 1px  hsl(23, 7%, 23%);
 }
-#resDate, #resTime, #fName, #lName, #email, #eMail, #phone, #drinkType, #message, #name{
+#fName, #lName, #email, #eMail, #phone, #drinkType, #message, #name{
     font-size: 14px;
     background-color: #ffffff;
     height: 30px;
@@ -149,23 +162,153 @@ input, select, textarea {
     border-radius: 8px;
     box-shadow: 1px 1px 6px 1px  hsl(23, 7%, 23%);
 }
+#resDate, #resStartTime, #resEndTime {
+    font-size: 14px;
+    background-color: #ffffff;
+    height: 30px;
+    width: 180px;
+    border-radius: 8px;
+    box-shadow: 1px 1px 6px 1px  hsl(23, 7%, 23%);
+}
+#cNum, #cName{
+    font-size: 12px;
+    background-color: #ffffff;
+    height: 20px;
+    width: 220px;
+    border-radius: 8px;
+}
+#expDate, #sCode{
+    display: flex;
+    flex-direction: column;
+    font-size: 10px;
+    background-color: #ffffff;
+    height: 20px;
+    width: 90px;
+    border-radius: 8px;
+}
+.accordionHeader{
+    background: hsl(23, 7%, 23%);
+    box-shadow: 1px 1px 6px 1px #78ada5;
+    color: white;
+    border-radius: 8px;
+    padding: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    border: none;
+    text-align: left;
+    width: 98%;
+    outline: none;
+    transition: 0.3s;
+    border: 2px solid #78ada5;
+}
+.pay{
+    width: 90px;;
+}
+.active, .accordionHeader:hover {
+    background: #b0907b;
+}
+.accordionContent {
+  padding: 0 18px;
+  background-color: white;
+  box-shadow: 1px 1px 6px 1px  hsl(23, 7%, 23%);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
 
-/*MENU*/
+/*Search, Edit, Cancel Pages*/
+.searchRes{
+    display: grid;
+    justify-content: center;
+}
+.search {
+    width: 95px;
+    background: hsl(23, 7%, 23%);
+    color: white;
+    border-radius: 12px;
+    padding: 12px;
+}
+.search:hover {
+    width: 80px;
+    background-color: #b0907b;
+}
+.edit {
+    border-radius: 30px;
+    padding: 4px;
+    width: 70px;
+    background-color: hsl(23, 7%, 23%);
+    color: white;
+    border: 1px solid white;
+}
+.edit:hover {
+    background-color: #be641a;
+}
+.editSuccess{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+}
+.success{
+    align-self: center;
+    max-width: 600px;
+    text-align: left;
+    padding: 10px;
+}
+.cancel {
+    border-radius: 30px;
+    padding: 4px;
+    width: 70px;
+    background-color: hsl(23, 7%, 23%);
+    color: white;
+    border: 1px solid white;
+}
+.cancel:hover {
+    background-color: #921c27;
+}
+h4{
+    color: #921c27;
+}
+
+.confirm-align{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.confirmation-container{
+    align-self: center;
+    max-width: 550px;
+    text-align: left;
+    background-color: white;
+    padding: 50px;
+    border-radius: 8px;
+    box-shadow: 3px 3px 10px 4px  #372115;
+}
+
+/*MENU PAGE*/
+
 .menu-item span {
     font-weight: bold;
 }
 .menu-section {
-    margin: 20px;
+    margin: 10px;
     padding: 10px;
     border: 3px solid #625750;
     border-radius: 8px;
     background-color: #fff;
 }
 .menu-item {
-    margin: 5px 0;
-    font-size: 16px;
-    padding: 5px;
-}
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px dashed #625750;
+  }
+  
+  .menu-desc {
+    margin: 4px 0 0 0;
+    font-size: 0.85rem;
+    color: #625750;
+  }
 .menu-item span {
     font-weight: bold;
 }
@@ -261,10 +404,12 @@ input, select, textarea {
 .printBtn{
     font-size: medium;
 }
-/* CALANDER */
+
+
+/* HOME PAGE - CALANDER */
 .calendar-container {
-    width: 400px;
-    height: 530px;
+    width: 500px;
+    height: 580px;
     padding: 0px;
     background-color: #b7b19e;
     display: flex;
@@ -279,11 +424,17 @@ input, select, textarea {
     margin-bottom: 10px;
     padding: 10px;
 }
+#prev-month{
+    margin-left: 30px;
+}
+#prev-month, #next-month{
+    font-size: medium;
+}
 button {
     background-color: hsl(23, 7%, 23%);
     align-items: center;
-    color:#4EC9B0;
-    border: 2px solid #CE9178;
+    color: white;
+    border: 1px solid #CE9178;
     border: none;
     padding: 10px;
     cursor: pointer;
@@ -309,25 +460,64 @@ button:hover {
 #calendar td:hover {
     background-color: #B5CEA8;
 }
+
 /* Upcoming Events Section */
 .upcoming-events {
-    margin-top: 5px;
+    margin-top: 3px;
     width: 100%;
-    min-height: 400px;
 }
 #events-list {
     list-style: none;
     padding: 5px;
-    max-width: 600px;
+    max-width: 500px;
 }
 li {
     display: flex;
     justify-content: left;
-    max-width: 660px;
-    padding-top: 6px;
+    padding-top: 7px;
     padding-bottom: 6px;
     white-space: nowrap; 
 }
+
+.aboutUs{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.aboutAlign{
+    align-self: center;
+    max-width: 750px;
+    text-align: left;
+    padding: 20px;
+}
+
+
+@media print {
+    /* Hide elements on the page */
+    body * {
+        visibility: hidden;
+    }
+    /* Make only the confirmation container visible */
+    .confirmation-container, 
+    .confirmation-container * {
+        visibility: visible;
+        box-shadow: 0px 0px 0px 0px;
+    }
+    /* Position the confirmation container at the top left of the printed page */
+    .confirmation-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+}
+.addressContainer {
+    line-height: 1.5;
+}
+.addressContainer strong {
+    display: block;
+    margin-bottom: 0.5em;
+}
+
 
 /*FOOTER Social media links */
 .footer .socialLinks {
@@ -401,143 +591,9 @@ li {
     box-shadow: 0px 2px 5px #625750;
 }
 
-.accordion {
-    width: 100%;
-    margin: 20px auto;
-}
-.accordionItem {
-    border-bottom: 1px solid #78ada5;
-
-}
-.accordionHeader {
-    background: hsl(23, 7%, 23%);
-    color: white;
-    border-radius: 8px;
-    padding: 8px;
-    cursor: pointer;
-    font-size: 16px;
-    border: none;
-    text-align: left;
-    width: 98%;
-    outline: none;
-    transition: 0.3s;
-    border: 2px solid #78ada5;
-
-}
-.accordionHeader:hover {
-    background: #b0907b;
-}
-.accordionContent {
-    display: none;
-    padding: 15px;
-    background: #fff;
-    overflow: hidden;
-    box-shadow: 1px 1px 8px 1px  hsl(23, 7%, 23%);
-}
-
-/*SEARCH*/
-.searchRes{
-    display: grid;
-    justify-content: center;
-}
-.search {
-    width: 80px;
-    background: hsl(23, 7%, 23%);
-    color: white;
-    border-radius: 12px;
-    padding: 12px;
-}
-.search:hover {
-    width: 80px;
-    background-color: #b0907b;
-}
-.edit {
-    border-radius: 30px;
-    padding: 4px;
-    width: 70px;
-    background-color: hsl(23, 7%, 23%);
-    color: white;
-    border: 1px solid white;
-}
-.edit:hover {
-    background-color: #be641a;
-}
-.cancel {
-    border-radius: 30px;
-    padding: 4px;
-    width: 70px;
-    background-color: hsl(23, 7%, 23%);
-    color: white;
-    border: 1px solid white;
-}
-.cancel:hover {
-    background-color: #921c27;
-}
-
-.confirm-align{
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.confirmation-container{
-    align-self: center;
-    max-width: 500px;
-    text-align: left;
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 3px 3px 10px 4px  #372115;
-}
-.serviceOpt{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-.resAlign{
-    align-self: center;
-    max-width: 620px;
-    text-align: left;
-    padding: 20px;
-}
-.aboutUs{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-.aboutAlign{
-    align-self: center;
-    max-width: 750px;
-    text-align: left;
-    padding: 20px;
-}
 
 
-@media print {
-    /* Hide elements on the page */
-    body * {
-        visibility: hidden;
-    }
-    /* Make only the confirmation container visible */
-    .confirmation-container, 
-    .confirmation-container * {
-        visibility: visible;
-        box-shadow: 0px 0px 0px 0px;
-    }
-    /* Position the confirmation container at the top left of the printed page */
-    .confirmation-container {
-        position: absolute;
-        top: 0;
-        left: 0;
-    }
-}
-.addressContainer {
-    line-height: 1.5;
-}
-.addressContainer strong {
-    display: block;
-    margin-bottom: 0.5em;
-}
+
 
 /* Responsive Design */
 @media (max-width: 768px) {

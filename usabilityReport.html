@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Task List for Jessie's Java</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="content">
+        <div id="nav"></div>
+
+        <script>
+          fetch("nav.html")
+            .then(response => response.text())
+            .then(data => {
+              document.getElementById("nav").innerHTML = data;
+            });
+        </script>
+</head>
+<body><dv class="reportContainer">
+
+
+  <h1>Usability Testing Report</h1>
+  <p>I used two users for usability testing for Jessie's Java.</p>
+  <div class="userTask">
+
+    <h2>User: Johnny York</h2>
+
+    <h3>Browse Information</h3>
+    <ul>
+      <li>View and interact with the event calendar</li>
+      <li>Explore the coffee menu options</li>
+      <li>Read about the cafe on the About Us page</li>
+      <li>Visit social media links for Jessie's Java</li>
+    </ul>
+
+    <h3>Make A Reservation</h3>
+    <ul>
+      <li>Access the reservation form</li>
+      <li>Fill in required information with alerts for out of bounds time</li>
+      <li>Read and acknowledge disclaimer</li>
+      <li>Submit form</li>
+      <li>View successful reservation information</li>
+      <li>Receive confirmation via email</li>
+      <li>Ability to search for reservation information</li>
+      <li>Ability to edit reservation information</li>
+      <li>Ability to cancel reservations</li>
+    </ul>
+
+    <h3>Get Help</h3>
+    <ul>
+      <li>Interact with the chatbot in the corner of all pages</li>
+      <li>Access contact forms to e-mail the company</li>
+    </ul>
+
+      <strong>Johnny’s Feedback:</strong><br>
+      Johnny informed me that he did not like that his information was deleted after entering it into the reservation form when the reservation times were not available. He also suggested that the form should only display available times. He mentioned Brewgle takes a while to load and may be expired. Johnny also found the contact form difficult to locate on the About Us page. However, he enjoyed everything else about the website.
+    </div>
+    <br>
+
+  <div class="userTask">
+    <h2>User: Gabby Martin</h2>
+
+    <h3>Browse Information</h3>
+    <ul>
+      <li>View and interact with the event calendar<br>
+        &nbsp;&nbsp;&nbsp;&nbsp; <em>User:</em> Yes, the event calendar is available on the home page, it is an interactive calendar.</li>
+      <li>Explore the coffee menu options<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;  <em>User:</em> Yes, I like that the menu items have a punny description that still tells you about the flavor. You cannot pre-purchase coffee, but I understand wanting it fresh during your reservation.</li>
+      <li>Read about the cafe on the About Us page<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;   <em>User:</em> Yes.</li>
+      <li>Visit social media links for Jessie's Java<br>
+        &nbsp;&nbsp;&nbsp;&nbsp; <em>User:</em> Yes, the Facebook link just goes to Facebook, while the Instagram link goes to Jessie’s Java page.</li>
+    </ul>
+
+    <h3>Make A Reservation</h3>
+    <ul>
+      <li>Access the reservation form<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;  <em>User:</em> Yes, available on the reservation page.</li>
+      <li>Fill in required information with alerts<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<em>User:</em> Yes, alerts are shown for missing or out-of-hours time.</li>
+      <li>Read and acknowledge disclaimer<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<em>User:</em> Yes, displayed in a clickable accordion.</li>
+      <li>Submit form<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<em>User:</em> Yes, submitted with fake payment for testing.</li>
+      <li>View successful reservation info<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<em>User:</em> Yes, confirmation page includes PDF save/print option.</li>
+      <li>Receive confirmation via email<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<em>User:</em> Yes, received in junk folder from jessies.java1.</li>
+      <li>Search for reservation info<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<em>User:</em> Yes, using confirmation number.</li>
+      <li>Edit reservation info<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<em>User:</em> Yes, including style and time with updated price. Notes provided about payment and edits.</li>
+      <li>Cancel reservations<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<em>User:</em> Yes, got confirmation of successful cancellation.</li>
+    </ul>
+
+    <h3>Get Help</h3>
+    <ul>
+      <li>Interact with the chatbot<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<em>User:</em> Yes, Brewgle was available and helpful with both reservation and programming questions.</li>
+      <li>Access contact forms<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<em>User:</em> Yes, form confirmed message was sent.</li>
+    </ul>
+
+   <strong>Gabby’s Feedback:</strong><br>
+      Gabby said it was a good website overall, with enjoyable design and clever menu descriptions. She suggested limiting reservation time selections to every 15 or 30 minutes.
+    </div>
+</div>
+</body>
+</html>

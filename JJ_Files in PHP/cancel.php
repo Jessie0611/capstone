@@ -1,41 +1,19 @@
 <?php
 include("database.php");
 
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['resID'])) {
-    $resID = $_POST['resID'];
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['resID'])) { //checks that form submitted via POST
+    $resID = $_POST['resID']; //resID included in data, only valid cancellation request go through
 
-    $stmt = $conn->prepare("UPDATE reservations SET status = 'Cancelled' WHERE resID = ?");
+//Prepares a parameterized SQL query to prevent SQL injection, Updates  status column in reservations table to 'Canceled'
+    $stmt = $conn->prepare("UPDATE reservations SET status = 'Canceled' WHERE resID = ?"); //
     $stmt->bind_param("i", $resID);
-    if ($stmt->execute()) {
-        header("Location: search.php?cancelled=1");
-        exit;
-    } else {
-        echo "Failed to cancel reservation.";
-    }
+    $stmt->execute();
+
+    // Redirect to confirmation page
+    header("Location: cancelConfirm.php?resID=" . $resID); //redirects the user to cancelConfirm.php
+    exit;
 } else {
+//If the page was accessed without a POST request or without a resID, it just shows an error message and exits.
     echo "Invalid request.";
+    exit;
 }
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jessie's Java</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    
-</body>
-</html>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Search Reservation - Jessie's Java</title>
-</head>
-<body>
-<div class="content">
-        <div class="hero">
-            <img src="Images/JJ-resPaymentHero.png" alt="Hero Image Unavailable" width="100%">
-        </div>
-        <?php include('nav.php'); ?>
